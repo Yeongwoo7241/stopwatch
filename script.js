@@ -224,6 +224,31 @@ mainBtn.addEventListener('click', () => {
     }
 });
 
+function createFirework(x, y) {
+    const firework = document.createElement('div');
+    firework.className = 'firework';
+    firework.style.left = `${x}px`;
+    firework.style.top = `${y}px`;
+    document.body.appendChild(firework);
+
+    // 애니메이션이 끝나면 요소 제거
+    setTimeout(() => {
+        firework.remove();
+    }, 1000); // 애니메이션 지속 시간과 일치시킴
+}
+
+function launchFireworks() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // 여러 개의 폭죽을 임의의 위치에서 생성
+    for (let i = 0; i < 10; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        createFirework(x, y);
+    }
+}
+
 function processResults() {
     if (Object.keys(scores).length === selectedParticipants.length) {
         // 모든 참가자가 경기를 마쳤는지 확인
@@ -245,6 +270,9 @@ function processResults() {
             winnerMessage.className = 'highlight';
             winnerMessage.innerText = `오늘의 당첨자: ${lowestScorers[0]}`;
             resultDisplay.appendChild(winnerMessage);
+
+            // 폭죽 애니메이션 실행
+            launchFireworks();
         } else {
             // 꼴찌가 2명 이상일 경우
             const shootOffMessage = document.createElement('div');
@@ -281,6 +309,7 @@ function processResults() {
         }
     }
 }
+
 
 function updateTime() {
     updatedTime = new Date().getTime();
