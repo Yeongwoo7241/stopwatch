@@ -118,3 +118,24 @@ html, body {
     text-align: center;  /* 가운데 정렬 */
     animation: rainbow 3s infinite;  /* 무지개색 애니메이션 */
 }
+
+/* 폭죽 애니메이션 정의 */
+@keyframes fireworks {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
+.firework {
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    animation: fireworks 1s ease-out forwards;
+}
