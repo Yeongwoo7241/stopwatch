@@ -159,7 +159,7 @@ mainBtn.addEventListener('click', () => {
     if (!running && mainBtn.innerText === 'Start') {
         // Start 기능
         startTime = new Date().getTime();
-        tInterval = setInterval(updateTime, 10);  // 10ms마다 업데이트
+        tInterval = setInterval(, 10);  // 10ms마다 업데이트
         mainBtn.innerText = 'Stop';
         running = true;
         canStop = false;
@@ -282,19 +282,17 @@ function processResults() {
     }
 }
 
-function updateTime() {
-    updatedTime = new Date().getTime();
     difference = updatedTime - startTime;
 
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
-    let milliseconds = Math.floor((difference % 1000) / 10);
+    let milliseconds = Math.floor((difference % 1000) / 10);  // 밀리초를 두 자리로 표시
 
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
     milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
 
-    display.innerText = minutes + ':' + seconds + ':' + milliseconds;
+    display.innerText = minutes + ':' + seconds + ':' + milliseconds; // 밀리초는 소수점 이후에 표시
 }
 
 
