@@ -234,19 +234,25 @@ function createFirework(x, y) {
     // 애니메이션이 끝나면 요소 제거
     setTimeout(() => {
         firework.remove();
-    }, 1000); // 애니메이션 지속 시간과 일치시킴
+    }, 10000); // 10초로 변경
 }
 
 function launchFireworks() {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // 여러 개의 폭죽을 임의의 위치에서 생성
-    for (let i = 0; i < 10; i++) {
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-        createFirework(x, y);
-    }
+    const interval = setInterval(() => {
+        for (let i = 0; i < 5; i++) { // 한번에 5개의 폭죽 생성
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            createFirework(x, y);
+        }
+    }, 500); // 0.5초마다 새로운 폭죽 생성
+
+    // 10초 후 폭죽 생성 중지
+    setTimeout(() => {
+        clearInterval(interval);
+    }, 10000); // 10초 동안 폭죽 생성
 }
 
 function processResults() {
@@ -309,6 +315,7 @@ function processResults() {
         }
     }
 }
+
 
 
 function updateTime() {
