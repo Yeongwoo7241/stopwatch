@@ -286,18 +286,17 @@ function updateTime() {
     updatedTime = new Date().getTime();
     difference = updatedTime - startTime;
 
-    let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
     let milliseconds = Math.floor((difference % 1000) / 10);
 
-    hours = (hours < 10) ? "0" + hours : hours;
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
     milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
 
-    display.innerText = hours + ':' + minutes + ':' + seconds;
+    display.innerText = minutes + ':' + seconds + ':' + milliseconds;
 }
+
 
 function displayResults() {
     // 결과를 표시하기 전에 기존 내용을 지움
