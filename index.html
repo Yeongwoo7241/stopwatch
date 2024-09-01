@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 14 Pro Stopwatch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 첫 번째 페이지: 참여자 선택 -->
+    <div class="container" id="page1">
+        <h1>오늘의 참여자를 선택하세요</h1>
+        <div id="participants">
+            <button class="participantBtn" data-name="박정규">박정규</button>
+            <button class="participantBtn" data-name="박주인">박주인</button>
+            <button class="participantBtn" data-name="이규돈">이규돈</button>
+            <button class="participantBtn" data-name="황의천">황의천</button>
+            <button class="participantBtn" data-name="정연욱">정연욱</button>
+            <button class="participantBtn" data-name="서영우">서영우</button>
+        </div>
+        <div id="addParticipant">
+            <input type="text" id="newParticipantName" placeholder="새 참가자 이름 입력" />
+            <button id="addParticipantBtn" class="btn-3d green">인원 추가</button>
+        </div>
+        <button id="gameStartBtn" class="btn-3d red" disabled>Game Start!</button>
+    </div>
+
+    <!-- 두 번째 페이지: 스톱워치 게임 -->
+    <div class="container" id="page2" style="display: none;">
+        <h1 id="coffeeMessage">오늘 커피는 ???님이 삽니다.</h1>
+        <h2 id="currentPlayer">현재 플레이어를 선택하세요</h2>
+        <div id="participantSelection"></div>
+        <div id="display">00:00:00.00</div>
+        <div id="resultDisplay" style="font-size: 3rem; margin-top: 20px;"></div> <!-- 점수 표시 영역 추가 -->
+        <button id="mainBtn" class="round-button red" disabled>Start</button>
+        <div id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
