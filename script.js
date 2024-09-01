@@ -115,7 +115,7 @@ function selectParticipant(event) {
     currentPlayer.innerText = `현재 플레이어: ${currentParticipant}`;
     mainBtn.disabled = false;  // 참가자를 선택하면 Start 버튼 활성화
     mainBtn.innerText = 'Start';
-    display.innerText = '00:00.00';
+    display.innerText = '00:00:00';  // 초깃값을 분:초:밀리초로 설정
     display.style.color = 'black'; // 시간초 색상을 검은색으로 초기화
     resultDisplay.innerText = ''; // 이전 결과 초기화
     totalMilliseconds = 0;
@@ -215,7 +215,7 @@ mainBtn.addEventListener('click', () => {
     } else if (!running && mainBtn.innerText === 'Reset') {
         // Reset 기능
         clearInterval(tInterval);
-        display.innerText = '00:00.00';
+        display.innerText = '00:00:00';  // 다시 분:초:밀리초 형식으로 리셋
         display.style.color = 'black'; // 색상 초기화
         resultDisplay.innerText = '';  // 결과 초기화
         mainBtn.innerText = 'Start';
