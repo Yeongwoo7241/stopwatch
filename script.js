@@ -115,7 +115,7 @@ function selectParticipant(event) {
     currentPlayer.innerText = `현재 플레이어: ${currentParticipant}`;
     mainBtn.disabled = false;  // 참가자를 선택하면 Start 버튼 활성화
     mainBtn.innerText = 'Start';
-    display.innerText = '00:00:00';  // 초깃값을 분:초:밀리초로 설정
+    display.innerText = '00:00.00';
     display.style.color = 'black'; // 시간초 색상을 검은색으로 초기화
     resultDisplay.innerText = ''; // 이전 결과 초기화
     totalMilliseconds = 0;
@@ -159,7 +159,7 @@ mainBtn.addEventListener('click', () => {
     if (!running && mainBtn.innerText === 'Start') {
         // Start 기능
         startTime = new Date().getTime();
-        tInterval = setInterval(, 10);  // 10ms마다 업데이트
+        tInterval = setInterval(updateTime, 10);  // 10ms마다 업데이트
         mainBtn.innerText = 'Stop';
         running = true;
         canStop = false;
@@ -215,7 +215,7 @@ mainBtn.addEventListener('click', () => {
     } else if (!running && mainBtn.innerText === 'Reset') {
         // Reset 기능
         clearInterval(tInterval);
-        display.innerText = '00:00:00';  // 다시 분:초:밀리초 형식으로 리셋
+        display.innerText = '00:00.00';
         display.style.color = 'black'; // 색상 초기화
         resultDisplay.innerText = '';  // 결과 초기화
         mainBtn.innerText = 'Start';
@@ -282,17 +282,19 @@ function processResults() {
     }
 }
 
+function updateTime() {
+    updatedTime = new Date().getTime();
     difference = updatedTime - startTime;
 
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
-    let milliseconds = Math.floor((difference % 1000) / 10);  // 밀리초를 두 자리로 표시
+    let milliseconds = Math.floor((difference % 1000) / 10);
 
     minutes = (minutes < 10) ? "0" + minutes : minutes;
     seconds = (seconds < 10) ? "0" + seconds : seconds;
     milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
 
-    display.innerText = minutes + ':' + seconds + ':' + milliseconds; // 밀리초는 소수점 이후에 표시
+    display.innerText = minutes + ':' + seconds + ':' + milliseconds;
 }
 
 
